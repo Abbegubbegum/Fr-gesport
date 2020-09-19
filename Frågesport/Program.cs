@@ -10,84 +10,34 @@ namespace Frågesport
             string answer = "";
             bool spela = true;
 
+            string q1 = "First question, How many bones in a shark?";
+            string a11 = "250";
+            string a12 = "100";
+            string a13 = "0";
+            string c1 = "3";
+
+            string q2 = "Second question, This one is a douzie! Var lägger gökar ägg?";
+            string a21 = "I en grop i marken";
+            string a22 = "I andra fåglars bo";
+            string a23 = "I vanliga bon av pinnar";
+            string c2 = "2";
+
+            string q3 = "Third question, What is this planet called?";
+            string a31 = "Saturn";
+            string a32 = "Neptune";
+            string a33 = "Uranus";
+            string c3 = "1";
+
             while (spela)
             {
                 points = 0;
-                answer = "";
-
                 System.Console.WriteLine("Welcome to the show! 1 right answer is 100 points, let's see who's a dumb boi!");
 
-                while (answer != "1" && answer != "2" && answer != "3")
-                {
-                    System.Console.WriteLine("First question, How many bones in a shark?");
-                    System.Console.WriteLine("1: 250");
-                    System.Console.WriteLine("2: 100");
-                    System.Console.WriteLine("3: 0");
+                points += Fråga(q1, a11, a12, a13, c1);
 
-                    answer = Console.ReadLine();
-                }
+                points += Fråga(q2, a21, a22, a23, c2);
 
-                if (answer == "3")
-                {
-                    System.Console.WriteLine("Correct!");
-                    points += 100;
-                }
-                else
-                {
-                    System.Console.WriteLine("Fail!");
-                }
-
-                answer = "";
-                while (answer != "1" && answer != "2" && answer != "3")
-                {
-
-                    System.Console.WriteLine("Second question, This one is a douzie! Var lägger gökar ägg?");
-                    System.Console.WriteLine("1: I en grop i marken");
-                    System.Console.WriteLine("2: I andra fåglars bo");
-                    System.Console.WriteLine("3: I vanliga bon av pinnar");
-
-                    answer = Console.ReadLine();
-                }
-
-                if (answer == "2")
-                {
-                    System.Console.WriteLine("Correct!");
-                    points += 100;
-                }
-                else
-                {
-                    System.Console.WriteLine("Fail!");
-                }
-
-                answer = "";
-                while (answer != "1" && answer != "2" && answer != "3")
-                {
-
-
-                    Console.WriteLine("    _...MMMMM88&&&&..._");
-                    Console.WriteLine(" .::'''MMMMM88&&&&&&'''::.");
-                    Console.WriteLine("::     MMMMM88&&&&&&     ::");
-                    Console.WriteLine("'::....MMMMM88&&&&&&....::'");
-                    Console.WriteLine("   `''''MMMMM88&&&&''''`");
-                    Console.WriteLine("         'MMM8&&&'");
-                    System.Console.WriteLine("Third question, What is this planet called?");
-                    System.Console.WriteLine("1: Saturn");
-                    System.Console.WriteLine("2: Neptune");
-                    System.Console.WriteLine("3: Uranus");
-
-
-                    answer = Console.ReadLine();
-                }
-
-                if (answer == "1")
-                {
-                    System.Console.WriteLine("Correct!");
-                    points += 100;
-                }
-                else
-                {
-                    System.Console.WriteLine("Fail!");
-                }
+                points += BFråga(q3, a31, a32, a33, c3);
 
                 System.Console.WriteLine("Alright results are in!");
                 System.Console.WriteLine("You got: " + points + " points!");
@@ -107,11 +57,9 @@ namespace Frågesport
 
                 Console.ReadLine();
 
-
-
+                answer = "";
                 while (answer != "n" && answer != "y")
                 {
-
                     System.Console.WriteLine("Vill du spela igen? Y/N");
                     answer = Console.ReadLine().ToLower();
                     if (answer == "n")
@@ -120,17 +68,67 @@ namespace Frågesport
                     }
                     else if (answer == "y")
                     {
-
+                        System.Console.WriteLine("Let's goo!");
                     }
-
                 }
+            }
+        }
+        static int Fråga(string q, string a1, string a2, string a3, string c)
+        {
+            string ans = "";
+            while (ans != "1" && ans != "2" && ans != "3")
+            {
+                System.Console.WriteLine(q);
+                System.Console.WriteLine("1: " + a1);
+                System.Console.WriteLine("2: " + a2);
+                System.Console.WriteLine("3: " + a3);
+
+                ans = Console.ReadLine();
+            }
+
+            if (ans == c)
+            {
+                System.Console.WriteLine("Correct!");
+                return 100;
+            }
+            else
+            {
+                System.Console.WriteLine("Fail!");
+                return 0;
+            }
 
 
+
+        }
+        static int BFråga(string q, string a1, string a2, string a3, string c)
+        {
+            string ans = "";
+            while (ans != "1" && ans != "2" && ans != "3")
+            {
+                Console.WriteLine("    _...MMMMM88&&&&..._");
+                Console.WriteLine(" .::'''MMMMM88&&&&&&'''::.");
+                Console.WriteLine("::     MMMMM88&&&&&&     ::");
+                Console.WriteLine("'::....MMMMM88&&&&&&....::'");
+                Console.WriteLine("   `''''MMMMM88&&&&''''`");
+                Console.WriteLine("         'MMM8&&&'");
+                System.Console.WriteLine(q);
+                System.Console.WriteLine("1: " + a1);
+                System.Console.WriteLine("2: " + a2);
+                System.Console.WriteLine("3: " + a3);
+
+                ans = Console.ReadLine();
+            }
+
+            if (ans == c)
+            {
+                System.Console.WriteLine("Correct!");
+                return 100;
+            }
+            else
+            {
+                System.Console.WriteLine("Fail!");
+                return 0;
             }
         }
     }
 }
-
-
-
-
